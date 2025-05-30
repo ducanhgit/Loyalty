@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  pg_loyalty:
+    image: postgres:latest
+    container_name: pg_loyalty
+    restart: unless-stopped
+    ports:
+      - "5433:5432" # Port host:container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: loyalty_db
+    volumes:
+      - pg_loyalty_data:/var/lib/postgresql/data
+
+volumes:
+  pg_loyalty_data:
